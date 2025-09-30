@@ -29,12 +29,27 @@
             text-align: center;
         }
 
+        /* --- ОБНОВЛЕНО --- */
         h1 {
             color: #2c3e50;
             font-size: 2em;
             font-weight: 700;
             margin-bottom: 5px;
+            /* Flexbox для центрирования иконки и текста */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        
+        /* СТИЛЬ ДЛЯ ВАШЕЙ ИКОНКИ */
+        .app-logo {
+            width: 48px;
+            height: 48px;
+            margin-right: 15px;
+            border-radius: 8px; /* Скругление углов для иконки */
+        }
+        /* --- /ОБНОВЛЕНО --- */
+        
         .tagline {
             color: #7f8c8d;
             font-size: 1.1em;
@@ -102,13 +117,16 @@
 <body>
 
     <div class="container">
-        <h1>CryptoCoin Widget</h1>
+        <h1>
+            <img src="app_icon.png" alt="App Icon" class="app-logo">
+            CryptoCoin Widget
+        </h1>
         <p class="tagline">A simple and reliable widget for tracking cryptocurrency market data.</p>
         
         <a href="https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget" 
            class="cta-button" 
            target="_blank">
-            GOOGLE PLAY
+             GOOGLE PLAY
         </a>
 
         <div class="contact-section">
