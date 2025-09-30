@@ -3,71 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoCoin Widget</title>
+    <title>CryptoCoin Widget Official Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); 
-            color: #2c3e50;
+            background-color: #f4f6f9; 
+            color: #333;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 600px;
-            margin: 50px 20px;
-            padding: 30px;
+            max-width: 500px; 
+            margin: 30px 20px;
+            padding: 40px;
             background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         h1 {
-            color: #1a73e8;
-            font-size: 2.2em;
+            color: #2c3e50;
+            font-size: 2em;
             font-weight: 700;
             margin-bottom: 5px;
         }
-
-        .section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ebf1f5;
-            text-align: left;
+        .tagline {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 30px;
         }
 
-        h2 {
-            color: #34495e;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #1a73e8; 
+        .cta-button {
             display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .app-link {
-            text-align: center;
+            padding: 15px 35px;
             margin-top: 20px;
-        }
-        .app-link a {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #1a73e8;
+            background-color: #4CAF50; 
             color: #ffffff;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 700;
+            font-size: 1.1em;
             transition: background-color 0.3s;
         }
-        .app-link a:hover {
-            background-color: #0d47a1;
+        .cta-button:hover {
+            background-color: #43a047;
+        }
+
+        .contact-section {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px dashed #e0e0e0;
+            text-align: left;
+        }
+        h2 {
+            color: #3498db; 
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         ul {
@@ -76,32 +76,26 @@
         }
         li {
             margin-bottom: 15px;
-            font-size: 1.05em;
+            display: flex;
+            align-items: center;
         }
-        li strong {
-            color: #2c3e50;
-            margin-right: 10px;
+        .icon {
+            font-size: 1.5em; 
+            margin-right: 15px;
+            line-height: 1; 
         }
-        .contact-link {
-            color: #1a73e8;
+        .contact-link-text {
+            color: #3498db;
             text-decoration: none;
+            font-weight: 500;
         }
-        .contact-link:hover {
+        .contact-link-text:hover {
             text-decoration: underline;
         }
-
-        .contact-icon {
-            width: 20px;       
-            height: 20px;
-            vertical-align: middle; 
-            margin-right: 8px;     
-        }
-        
-        .footer-note {
-            margin-top: 40px;
-            font-size: 0.75em;
-            color: #95a5a6;
-            text-align: center;
+		.contact-label {
+            font-weight: 600; 
+            color: #7f8c8d; 
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -109,50 +103,41 @@
 
     <div class="container">
         <h1>CryptoCoin Widget</h1>
+        <p class="tagline">A simple and reliable widget for tracking cryptocurrency market data.</p>
         
-        <p>A simple and reliable widget for tracking cryptocurrency market data.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget" 
+           class="cta-button" 
+           target="_blank">
+            GOOGLE PLAY
+        </a>
 
-        <div class="section">
-            <h2>Application Details</h2>
-            <p class="app-link">
-                <a href="https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget" target="_blank">Download on Google Play</a>
-            </p>
-        </div>
-
-        <div class="section">
+        <div class="contact-section">
             <h2>Support & Policy</h2>
             <ul>
-				<li>
-                    <strong>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" 
-                             alt="Telegram" 
-                             class="contact-icon"> 
-                        Telegram Channel:
-                    </strong> 
-					<a href="https://t.me/cryptocoinwidget" class="contact-link" target="_blank">
-						Follow us
-					</a>
-				</li>
                 <li>
-                    <strong>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" 
-                             alt="Email" 
-                             class="contact-icon"> 
-                        Support Email:
-                    </strong> 
-                    <a href="mailto:u5833235300@gmail.com" class="contact-link">u5833235300@gmail.com</a>
+                    <span class="icon">📢</span>
+					<span class="contact-label">Telegram Channel: </span>					
+                    <a href="https://t.me/cryptocoinwidget" class="contact-link-text" target="_blank">
+                        Follow us
+                    </a>
                 </li>
                 <li>
-                    <strong>
-                        🔒 Privacy Policy:
-                    </strong> 
-                    <a href="https://www.iubenda.com/privacy-policy/24034645" class="contact-link" target="_blank">View Privacy Policy</a>
+                    <span class="icon">✉️</span>
+					<span class="contact-label">Support Email: </span>
+                    <a href="mailto:u5833235300@gmail.com" class="contact-link-text">
+                        u5833235300@gmail.com
+                    </a>
+                </li>
+                <li>
+                    <span class="icon">🛡️</span>
+					<span class="contact-label">Privacy Policy: </span>					
+                    <a href="https://www.iubenda.com/privacy-policy/24034645" class="contact-link-text" target="_blank">
+                        View our commitment to your privacy
+                    </a>
                 </li>
             </ul>
         </div>
-
     </div>
 
 </body>
-
 </html>
