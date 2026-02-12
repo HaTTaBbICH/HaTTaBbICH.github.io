@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BEPJN4PE6N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEPJN4PE6N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-BEPJN4PE6N');
-</script>
+      gtag('config', 'G-BEPJN4PE6N');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoCoin Widget: Live Bitcoin & Crypto Price Tracker</title>
@@ -17,13 +18,13 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-       body {
+        body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
 
             background-color: #0f172a;
-            background-image: url('bg.png');
+            background-image: url('bg.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -36,17 +37,20 @@
             min-height: 100vh;
         }
 
-		.container {
+        .container {
             width: 100%;
             max-width: 500px;
             margin: 30px 20px;
             padding: 40px;
+            
+            /* Glassmorphism Effect */
             background-color: rgba(255, 255, 255, 0.85);
             -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
             border-radius: 24px;
+            
             text-align: center;
         }
 
@@ -68,7 +72,7 @@
         }
         
         .tagline {
-            color: #7f8c8d;
+            color: #546e7a;
             font-size: 1.1em;
             margin-bottom: 30px;
         }
@@ -76,7 +80,7 @@
         .contact-section {
             margin-top: 40px;
             padding-top: 25px;
-            border-top: 1px dashed #e0e0e0;
+            border-top: 1px dashed #b0bec5;
             text-align: left;
         }
         h2 {
@@ -108,72 +112,77 @@
         .contact-link-text:hover {
             text-decoration: underline;
         }
-		.contact-label {
+        .contact-label {
             font-weight: 600; 
-            color: #7f8c8d; 
+            color: #546e7a; 
             margin-right: 5px;
         }
 
-		.play-store-badge img {
-			width: 250px; 
-			height: auto;
-			transition: transform 0.2s;
-		}
-		.play-store-badge img:hover {
-			transform: scale(1.05);
-		}
-        .live-ticker {
+        .play-store-badge img {
+            width: 250px; 
+            height: auto;
+            transition: transform 0.2s;
+        }
+        .play-store-badge img:hover {
+            transform: scale(1.05);
+        }
+
+        .live-ticker-box {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
             
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             
-            padding: 10px 20px;
-            border-radius: 30px;
+            padding: 15px 20px;
+            border-radius: 20px;
             
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-direction: column;
+            gap: 8px;
             
             font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            color: #ffffff;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            transition: transform 0.2s;
-        }
-        
-        .live-ticker:hover {
-            transform: scale(1.05);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+            min-width: 180px;
         }
 
-        .btc-icon {
-            color: #F7931A;
-            font-size: 1.2em;
+        .ticker-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 0.95em;
+            font-weight: 700;
+        }
+
+        .coin-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .live-indicator {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background-color: #00ff00;
             border-radius: 50%;
-            box-shadow: 0 0 10px #00ff00;
+            box-shadow: 0 0 8px #00ff00;
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        
-        #btc-price {
-            min-width: 80px;
+        .price-value {
             text-align: right;
             transition: color 0.3s;
+            font-variant-numeric: tabular-nums;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -187,34 +196,32 @@
         
         <p class="tagline">A simple and reliable widget for tracking cryptocurrency market data.</p>
         
-
-
-<div class="play-store-badge">
-    <a href='https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target="_blank">
-      <img alt='Доступно в Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
-    </a>
-</div>
+        <div class="play-store-badge">
+            <a href='https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target="_blank">
+              <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
+            </a>
+        </div>
 
         <div class="contact-section">
             <h2>Support & Policy</h2>
             <ul>
                 <li>
                     <span class="icon">📢</span>
-					<span class="contact-label">Telegram Channel: </span>					
+                    <span class="contact-label">Telegram Channel: </span>                   
                     <a href="https://t.me/cryptocoinwidget" class="contact-link-text" target="_blank">
                         Follow us
                     </a>
                 </li>
                 <li>
                     <span class="icon">✉️</span>
-					<span class="contact-label">Support Email: </span>
+                    <span class="contact-label">Support Email: </span>
                     <a href="mailto:u58332353001243@gmail.com" class="contact-link-text">
                         u58332353001243@gmail.com
                     </a>
                 </li>
                 <li>
                     <span class="icon">🛡️</span>
-					<span class="contact-label">Privacy Policy: </span>					
+                    <span class="contact-label">Privacy Policy: </span>                 
                     <a href="https://www.iubenda.com/privacy-policy/24034645" class="contact-link-text" target="_blank">
                         View our commitment to your privacy
                     </a>
@@ -222,39 +229,70 @@
             </ul>
         </div>
     </div>
-<div class="live-ticker">
-        <div class="live-indicator"></div>
-        <span class="btc-icon">₿</span>
-        <span>BTC/USDT</span>
-        <span id="btc-price">Loading...</span>
+
+    <div class="live-ticker-box">
+        <div class="ticker-row">
+            <div class="coin-info">
+                <div class="live-indicator"></div>
+                <span style="color: #F7931A;">₿</span>
+                <span>BTC</span>
+            </div>
+            <span id="price-btc" class="price-value">...</span>
+        </div>
+
+        <div class="ticker-row">
+            <div class="coin-info">
+                <div class="live-indicator"></div>
+                <span style="color: #627EEA;">Ξ</span>
+                <span>ETH</span>
+            </div>
+            <span id="price-eth" class="price-value">...</span>
+        </div>
+
+        <div class="ticker-row">
+            <div class="coin-info">
+                <div class="live-indicator"></div>
+                <span style="color: #14F195;">◎</span>
+                <span>SOL</span>
+            </div>
+            <span id="price-sol" class="price-value">...</span>
+        </div>
     </div>
 
-<script>
-        const ws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@trade');
-        const priceElement = document.getElementById('btc-price');
-        let lastPrice = 0;
+    <script>
+        const ws = new WebSocket('wss://stream.binance.com:9443/stream?streams=btcusdt@trade/ethusdt@trade/solusdt@trade');
+        const els = {
+            'BTCUSDT': document.getElementById('price-btc'),
+            'ETHUSDT': document.getElementById('price-eth'),
+            'SOLUSDT': document.getElementById('price-sol')
+        };
+
+        const lastPrices = { 'BTCUSDT': 0, 'ETHUSDT': 0, 'SOLUSDT': 0 };
+
         ws.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            const currentPrice = parseFloat(data.p); 
+            const message = JSON.parse(event.data);
+            const data = message.data; 
+            const symbol = data.s;
+            
+            const element = els[symbol];
+            if (!element) return;
+
+            const currentPrice = parseFloat(data.p);
+            
             const formattedPrice = new Intl.NumberFormat('en-US', {
                 style: 'currency',
-                currency: 'USD'
+                currency: 'USD',
+                minimumFractionDigits: 2
             }).format(currentPrice);
-            priceElement.innerText = formattedPrice;
-            if (lastPrice > 0) {
-                priceElement.style.color = currentPrice >= lastPrice ? '#4caf50' : '#ff5252';
+
+            element.innerText = formattedPrice;
+
+            if (lastPrices[symbol] > 0) {
+                element.style.color = currentPrice >= lastPrices[symbol] ? '#4caf50' : '#ff5252';
             }
-            lastPrice = currentPrice;
+            
+            lastPrices[symbol] = currentPrice;
         };
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
