@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEPJN4PE6N"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -123,6 +122,59 @@
 		.play-store-badge img:hover {
 			transform: scale(1.05);
 		}
+        .live-ticker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            
+            padding: 10px 20px;
+            border-radius: 30px;
+            
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+        }
+        
+        .live-ticker:hover {
+            transform: scale(1.05);
+        }
+
+        .btc-icon {
+            color: #F7931A;
+            font-size: 1.2em;
+        }
+
+        .live-indicator {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ff00;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        #btc-price {
+            min-width: 80px;
+            text-align: right;
+            transition: color 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -170,9 +222,34 @@
             </ul>
         </div>
     </div>
+<div class="live-ticker">
+        <div class="live-indicator"></div>
+        <span class="btc-icon">₿</span>
+        <span>BTC/USDT</span>
+        <span id="btc-price">Loading...</span>
+    </div>
 
+<script>
+        const ws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@trade');
+        const priceElement = document.getElementById('btc-price');
+        let lastPrice = 0;
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            const currentPrice = parseFloat(data.p); 
+            const formattedPrice = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(currentPrice);
+            priceElement.innerText = formattedPrice;
+            if (lastPrice > 0) {
+                priceElement.style.color = currentPrice >= lastPrice ? '#4caf50' : '#ff5252';
+            }
+            lastPrice = currentPrice;
+        };
+    </script>
 </body>
 </html>
+
 
 
 
