@@ -184,6 +184,55 @@
             50% { opacity: 0.4; }
             100% { opacity: 1; }
         }
+
+        .play-store-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .qr-hover-box {
+            position: absolute;
+            left: 110%;
+            top: 50%;
+            transform: translateY(-50%) scale(0.8);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 18px;
+            border: 1px solid rgba(20, 241, 149, 0.3); 
+            box-shadow: 0 0 20px rgba(20, 241, 149, 0.2);
+            width: 120px;
+            text-align: center;
+        }
+        
+        .play-store-container:hover .qr-hover-box {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) scale(1);
+        }
+        
+        .qr-hover-box img {
+            width: 100px;
+            height: 100px;
+            filter: invert(1) hue-rotate(100deg) brightness(1.5); 
+        }
+        
+        .qr-text {
+            color: #14F195;
+            font-size: 10px;
+            margin-top: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .qr-hover-box { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -197,9 +246,16 @@
         <p class="tagline">A simple and reliable widget for tracking cryptocurrency market data.</p>
         
         <div class="play-store-badge">
-            <a href='https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target="_blank">
-              <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
-            </a>
+            <div class="play-store-container">
+                <a href='https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target="_blank">
+                    <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
+                </a>
+                
+                <div class="qr-hover-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget" alt="QR Code">
+                    <div class="qr-text">Scan to Sync</div>
+                </div>
+            </div>
         </div>
 
         <div class="contact-section">
@@ -296,3 +352,4 @@
     </script>
 </body>
 </html>
+
