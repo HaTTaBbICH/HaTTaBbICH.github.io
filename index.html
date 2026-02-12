@@ -111,6 +111,15 @@
             color: #7f8c8d; 
             margin-right: 5px;
         }
+
+		.play-store-badge img {
+			width: 250px; /* Оптимальный размер для мобильных и десктопа */
+			height: auto;
+			transition: transform 0.2s;
+		}
+		.play-store-badge img:hover {
+			transform: scale(1.05); /* Легкий эффект при наведении */
+		}
     </style>
 </head>
 <body>
@@ -123,11 +132,13 @@
         
         <p class="tagline">A simple and reliable widget for tracking cryptocurrency market data.</p>
         
-        <a href="https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget" 
-           class="cta-button" 
-           target="_blank">
-             GOOGLE PLAY
-        </a>
+
+
+<div class="play-store-badge">
+    <a href='https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' target="_blank">
+      <img alt='Доступно в Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/ru_badge_web_generic.png'/>
+    </a>
+</div>
 
         <div class="contact-section">
             <h2>Support & Policy</h2>
@@ -159,5 +170,6 @@
 
 </body>
 </html>
+
 
 
