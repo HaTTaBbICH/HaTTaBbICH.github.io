@@ -12,7 +12,6 @@ self.addEventListener("install", e => {
 });
 
 self.addEventListener("fetch", e => {
-  // ❗ НЕ трогаем внешние запросы (google, api и т.д.)
   if (!e.request.url.startsWith(self.location.origin)) {
     return;
   }
