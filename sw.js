@@ -1,4 +1,4 @@
-const CACHE = "v1";
+const CACHE = "crypto-v1";
 
 self.addEventListener("install", e => {
   e.waitUntil(
