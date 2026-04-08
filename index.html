@@ -52,14 +52,12 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-
             background-color: #0f172a;
             background-image: url('bg.webp');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            
             color: #333;
             display: flex;
             justify-content: center;
@@ -72,14 +70,12 @@
             max-width: 500px;
             margin: 30px 20px;
             padding: 40px;
-            
             background-color: rgba(255, 255, 255, 0.85);
             -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
             border-radius: 24px;
-            
             text-align: center;
         }
 
@@ -167,18 +163,14 @@
             top: 20px;
             right: 20px;
             z-index: 1000;
-            
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            
             padding: 15px 20px;
             border-radius: 20px;
-            
             display: flex;
             flex-direction: column;
             gap: 8px;
-            
             font-family: 'Roboto', sans-serif;
             box-shadow: 0 4px 25px rgba(0,0,0,0.5);
             min-width: 180px;
@@ -233,7 +225,6 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease-out;
-            
             background: #ffffff;
             padding: 15px;
             border-radius: 15px;
@@ -262,8 +253,7 @@
             margin-top: 8px;
             font-weight: 700;
         }
-        
-        /* Language Switcher Styles */
+
         .language-switcher {
             position: fixed;
             top: 20px;
@@ -304,7 +294,7 @@
             background: #3498db;
             color: #fff;
         }
-
+        
         @media (max-width: 768px) {
             .qr-hover-box { display: none; }
             .language-switcher { top: 10px; left: 10px; max-width: 130px; }
@@ -390,7 +380,6 @@
             </div>
             <span id="price-btc" class="price-value">...</span>
         </div>
-
         <div class="ticker-row">
             <div class="coin-info">
                 <div class="live-indicator"></div>
@@ -399,7 +388,6 @@
             </div>
             <span id="price-eth" class="price-value">...</span>
         </div>
-
         <div class="ticker-row">
             <div class="coin-info">
                 <div class="live-indicator"></div>
@@ -411,7 +399,14 @@
     </div>
 
     <script>
-        // --- Translations Data ---
+        const els = {
+            'BTCUSDT': document.getElementById('price-btc'),
+            'ETHUSDT': document.getElementById('price-eth'),
+            'SOLUSDT': document.getElementById('price-sol')
+        };
+
+        const lastPrices = { 'BTCUSDT': 0, 'ETHUSDT': 0, 'SOLUSDT': 0 };
+
         const translations = {
             en: {
                 "tagline": "A simple and reliable widget for tracking cryptocurrency market data.",
@@ -452,28 +447,32 @@
             fr: { "tagline": "Un widget simple pour suivre les crypto-monnaies.", "seo-text": "Suivez BTC, ETH et SOL en temps réel.", "support-title": "Support et Politique", "qr-text": "Scanner" },
             it: { "tagline": "Un widget semplice per monitorare le criptovalute.", "seo-text": "Monitora BTC, ETH e SOL in tempo reale.", "support-title": "Supporto e Policy", "qr-text": "Scansiona" },
             pl: { "tagline": "Prosty widżet do śledzenia kryptowalut.", "seo-text": "Śledź BTC, ETH i SOL w czasie rzeczywistym.", "support-title": "Wsparcie i Zasady", "qr-text": "Skanuj" },
-            sv: { "tagline": "En enkel widget för att spåra kryptovalutor.", "seo-text": "Följ BTC, ETH och SOL i realtid.", "support-title": "Support & Policy", "qr-text": "Skanna" }
+            sv: { "tagline": "En enkel widget för att spåра kryptovalutor.", "seo-text": "Följ BTC, ETH och SOL i realtid.", "support-title": "Support & Policy", "qr-text": "Skanna" }
         };
+
+        const formatPrice = (price) => new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2
+        }).format(price);
+
         async function loadInitialPrices() {
             const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
             try {
                 const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbols=${JSON.stringify(symbols)}`);
                 const data = await response.json();
-                
                 data.forEach(item => {
-                    const element = els[item.symbol];
+                    const symbol = item.symbol;
+                    const element = els[symbol];
                     if (element) {
-                        element.innerText = new Intl.NumberFormat('en-US', {
-                            style: 'currency',
-                            currency: 'USD'
-                        }).format(parseFloat(item.price));
+                        const price = parseFloat(item.price);
+                        element.innerText = formatPrice(price);
+                        lastPrices[symbol] = price;
                     }
                 });
-            } catch (e) {
-                console.error("Ошибка загрузки начальных цен:", e);
-            }
+            } catch (e) { console.error("API error:", e); }
         }
-        loadInitialPrices();
+
         function setLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -481,52 +480,34 @@
                     el.innerText = translations[lang][key];
                 }
             });
-            // Update active button
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
             });
         }
 
+        loadInitialPrices();
+
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
         });
 
-        // --- Original WebSocket Logic ---
         const ws = new WebSocket('wss://stream.binance.com:9443/stream?streams=btcusdt@trade/ethusdt@trade/solusdt@trade');
-        const els = {
-            'BTCUSDT': document.getElementById('price-btc'),
-            'ETHUSDT': document.getElementById('price-eth'),
-            'SOLUSDT': document.getElementById('price-sol')
-        };
-
-        const lastPrices = { 'BTCUSDT': 0, 'ETHUSDT': 0, 'SOLUSDT': 0 };
-
         ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
             const data = message.data; 
             const symbol = data.s;
-            
             const element = els[symbol];
             if (!element) return;
 
             const currentPrice = parseFloat(data.p);
-            
-            const formattedPrice = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2
-            }).format(currentPrice);
-
-            element.innerText = formattedPrice;
+            element.innerText = formatPrice(currentPrice);
 
             if (lastPrices[symbol] > 0) {
                 element.style.color = currentPrice >= lastPrices[symbol] ? '#4caf50' : '#ff5252';
             }
-            
             lastPrices[symbol] = currentPrice;
         };
 
-        // PWA SW
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
         }
