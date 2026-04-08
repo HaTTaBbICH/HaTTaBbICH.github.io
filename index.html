@@ -454,7 +454,26 @@
             pl: { "tagline": "Prosty widżet do śledzenia kryptowalut.", "seo-text": "Śledź BTC, ETH i SOL w czasie rzeczywistym.", "support-title": "Wsparcie i Zasady", "qr-text": "Skanuj" },
             sv: { "tagline": "En enkel widget för att spåra kryptovalutor.", "seo-text": "Följ BTC, ETH och SOL i realtid.", "support-title": "Support & Policy", "qr-text": "Skanna" }
         };
-
+        async function loadInitialPrices() {
+            const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
+            try {
+                const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbols=${JSON.stringify(symbols)}`);
+                const data = await response.json();
+                
+                data.forEach(item => {
+                    const element = els[item.symbol];
+                    if (element) {
+                        element.innerText = new Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: 'USD'
+                        }).format(parseFloat(item.price));
+                    }
+                });
+            } catch (e) {
+                console.error("Ошибка загрузки начальных цен:", e);
+            }
+        }
+        loadInitialPrices();
         function setLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
