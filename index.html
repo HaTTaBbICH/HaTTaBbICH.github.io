@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEPJN4PE6N"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,8 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
-   <title>CryptoCoin Widget – Live BTC, ETH & SOL Price Tracker</title>
+    <title>CryptoCoin Widget – Live BTC, ETH & SOL Price Tracker</title>
     <meta name="description" content="Free real-time crypto price tracker widget for your screen. Monitor Bitcoin, Ethereum, and Solana live prices with CryptoCoin Widget. Fast, lightweight, and reliable.">
     <meta name="keywords" content="crypto widget, bitcoin tracker, ethereum price, solana live, crypto price ticker, btc widget android">
     
@@ -31,18 +29,14 @@
     <meta name="twitter:description" content="Live Bitcoin & Crypto price tracker.">
     <meta name="twitter:image" content="https://hattabbich.github.io/icon-512.png">
 
-    <!-- PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0f172a">
 
-    <!-- Icons -->
     <link rel="icon" href="icon-32.png">
     <link rel="apple-touch-icon" href="icon-192.png">
 
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -269,12 +263,69 @@
             font-weight: 700;
         }
         
+        /* Language Switcher Styles */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            max-width: 180px;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 8px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 5px 8px;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 6px;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        .lang-btn:hover {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-btn.active {
+            opacity: 1;
+            background: #3498db;
+            color: #fff;
+        }
+
         @media (max-width: 768px) {
             .qr-hover-box { display: none; }
+            .language-switcher { top: 10px; left: 10px; max-width: 130px; }
+            .live-ticker-box { top: auto; bottom: 20px; right: 10px; left: 10px; min-width: 0; }
         }
     </style>
 </head>
 <body>
+
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="bg">BG</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="it">IT</button>
+        <button class="lang-btn" data-lang="pl">PL</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="sv">SV</button>
+        <button class="lang-btn" data-lang="uk">UK</button>
+    </div>
 
     <div class="container">
         <h1>
@@ -282,9 +333,9 @@
             CryptoCoin Widget
         </h1>
         
-        <p class="tagline">A simple and reliable widget for tracking cryptocurrency market data.</p>
+        <p class="tagline" data-i18n="tagline">A simple and reliable widget for tracking cryptocurrency market data.</p>
 
-        <p class="seo-text">
+        <p class="seo-text" data-i18n="seo-text">
             Track Bitcoin (BTC), Ethereum (ETH), and Solana (SOL) prices in real time.
             Get fast updates and customizable widgets directly on your screen.
         </p>
@@ -297,32 +348,32 @@
                 
                 <div class="qr-hover-box">
                     <img src="qr_code.png" alt="QR code to install CryptoCoin Widget">
-                    <div class="qr-text">Scan to install</div>
+                    <div class="qr-text" data-i18n="qr-text">Scan to install</div>
                 </div>
             </div>
         </div>
 
         <div class="contact-section">
-            <h2>Support & Policy</h2>
+            <h2 data-i18n="support-title">Support & Policy</h2>
             <ul>
                 <li>
                     <span class="icon">📢</span>
-                    <span class="contact-label">Telegram Channel: </span>                   
-                    <a href="https://t.me/cryptocoinwidget" class="contact-link-text" target="_blank">
+                    <span class="contact-label" data-i18n="label-tg">Telegram Channel: </span>                    
+                    <a href="https://t.me/cryptocoinwidget" class="contact-link-text" target="_blank" data-i18n="link-tg">
                         Follow us
                     </a>
                 </li>
                 <li>
                     <span class="icon">✉️</span>
-                    <span class="contact-label">Support Email: </span>
+                    <span class="contact-label" data-i18n="label-mail">Support Email: </span>
                     <a href="mailto:u58332353001243@gmail.com" class="contact-link-text">
                         u58332353001243@gmail.com
                     </a>
                 </li>
                 <li>
                     <span class="icon">🛡️</span>
-                    <span class="contact-label">Privacy Policy: </span>                 
-                    <a href="https://www.iubenda.com/privacy-policy/24034645" class="contact-link-text" target="_blank">
+                    <span class="contact-label" data-i18n="label-privacy">Privacy Policy: </span>                  
+                    <a href="https://www.iubenda.com/privacy-policy/24034645" class="contact-link-text" target="_blank" data-i18n="link-privacy">
                         View our commitment to your privacy
                     </a>
                 </li>
@@ -360,6 +411,68 @@
     </div>
 
     <script>
+        // --- Translations Data ---
+        const translations = {
+            en: {
+                "tagline": "A simple and reliable widget for tracking cryptocurrency market data.",
+                "seo-text": "Track Bitcoin (BTC), Ethereum (ETH), and Solana (SOL) prices in real time. Get fast updates and customizable widgets directly on your screen.",
+                "qr-text": "Scan to install",
+                "support-title": "Support & Policy",
+                "label-tg": "Telegram Channel: ",
+                "link-tg": "Follow us",
+                "label-mail": "Support Email: ",
+                "label-privacy": "Privacy Policy: ",
+                "link-privacy": "View our commitment to your privacy"
+            },
+            ru: {
+                "tagline": "Простой и надежный виджет для отслеживания рыночных данных криптовалют.",
+                "seo-text": "Отслеживайте цены на Bitcoin (BTC), Ethereum (ETH) и Solana (SOL) в реальном времени. Получайте быстрые обновления и настраиваемые виджеты прямо на экране.",
+                "qr-text": "Сканируйте для установки",
+                "support-title": "Поддержка и Политика",
+                "label-tg": "Telegram канал: ",
+                "link-tg": "Подписаться",
+                "label-mail": "Email поддержки: ",
+                "label-privacy": "Политика конфиденциальности: ",
+                "link-privacy": "Наше обязательство по защите данных"
+            },
+            uk: {
+                "tagline": "Простий і надійний віджет для відстеження ринкових даних криптовалют.",
+                "seo-text": "Відстежуйте ціни на Bitcoin (BTC), Ethereum (ETH) та Solana (SOL) у реальному часі. Отримуйте швидкі оновлення та налаштовувані віджети прямо на екрані.",
+                "qr-text": "Скануйте для встановлення",
+                "support-title": "Підтримка та Політика",
+                "label-tg": "Telegram канал: ",
+                "link-tg": "Підписатися",
+                "label-mail": "Email підтримки: ",
+                "label-privacy": "Політика конфіденційності: ",
+                "link-privacy": "Наше зобов'язання щодо вашої приватності"
+            },
+            bg: { "tagline": "Прост и надежден виджет за проследяване на криптовалути.", "seo-text": "Следете BTC, ETH и SOL в реално време.", "support-title": "Поддръжка", "qr-text": "Сканирайте" },
+            de: { "tagline": "Ein einfaches Widget zur Verfolgung von Kryptowährungen.", "seo-text": "Verfolgen Sie BTC, ETH und SOL in Echtzeit.", "support-title": "Support & Richtlinien", "qr-text": "Scannen" },
+            es: { "tagline": "Un widget simple para rastrear criptomonedas.", "seo-text": "Sigue BTC, ETH y SOL en tiempo real.", "support-title": "Soporte y Política", "qr-text": "Escanear" },
+            fr: { "tagline": "Un widget simple pour suivre les crypto-monnaies.", "seo-text": "Suivez BTC, ETH et SOL en temps réel.", "support-title": "Support et Politique", "qr-text": "Scanner" },
+            it: { "tagline": "Un widget semplice per monitorare le criptovalute.", "seo-text": "Monitora BTC, ETH e SOL in tempo reale.", "support-title": "Supporto e Policy", "qr-text": "Scansiona" },
+            pl: { "tagline": "Prosty widżet do śledzenia kryptowalut.", "seo-text": "Śledź BTC, ETH i SOL w czasie rzeczywistym.", "support-title": "Wsparcie i Zasady", "qr-text": "Skanuj" },
+            sv: { "tagline": "En enkel widget för att spåra kryptovalutor.", "seo-text": "Följ BTC, ETH och SOL i realtid.", "support-title": "Support & Policy", "qr-text": "Skanna" }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+
+        // --- Original WebSocket Logic ---
         const ws = new WebSocket('wss://stream.binance.com:9443/stream?streams=btcusdt@trade/ethusdt@trade/solusdt@trade');
         const els = {
             'BTCUSDT': document.getElementById('price-btc'),
