@@ -5,7 +5,14 @@ self.addEventListener("install", e => {
     caches.open(CACHE).then(c =>
       c.addAll([
         "./",
-        "./index.html"
+        "./index.html",
+        "./manifest.json",
+        "./bg.webp",
+        "./app_icon.png",
+        "./qr_code.png",
+        "./icon-32.png",
+        "./icon-192.png",
+        "./icon-512.png"
       ])
     )
   );
