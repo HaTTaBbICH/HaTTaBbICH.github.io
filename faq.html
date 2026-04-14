@@ -46,6 +46,7 @@
                 <a href="features.html" data-i18n="nav-features">Features</a>
                 <a href="setup.html" data-i18n="nav-setup">How to Setup</a>
                 <a href="faq.html" class="active" data-i18n="nav-faq">FAQ</a>
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
             </nav>
             <h1 data-i18n="h1-title">Frequently Asked Questions</h1>
             <div class="seo-content">
@@ -81,7 +82,7 @@
     <script>
         const translations = {
             en: {
-                "nav-home": "Home", "nav-features": "Features", "nav-setup": "How to Setup", "nav-faq": "FAQ",
+                "nav-home": "Home", "nav-features": "Features", "nav-setup": "How to Setup", "nav-faq": "FAQ", "nav-contact": "Contact",
                 "h1-title": "Frequently Asked Questions",
                 "q1": "Does the widget drain battery?",
                 "a1": "No. The widget uses smart background sync via Android WorkManager. It updates on the lock screen, but you can enable 'Quiet Hours' to completely stop network requests during the night.",
@@ -91,7 +92,7 @@
                 "a3": "Check your internet connection. Also, ensure that battery optimization for the app is disabled in your Android system settings, as aggressive OS power management can kill background tasks."
             },
             ru: {
-                "nav-home": "Главная", "nav-features": "Возможности", "nav-setup": "Настройка", "nav-faq": "Частые вопросы",
+                "nav-home": "Главная", "nav-features": "Возможности", "nav-setup": "Настройка", "nav-faq": "Частые вопросы", "nav-contact": "Контакты",
                 "h1-title": "Частые вопросы",
                 "q1": "Садит ли виджет батарею?",
                 "a1": "Нет. Виджет использует умную фоновую синхронизацию. Обновления работают на заблокированном экране, но вы можете включить функцию 'Тихие часы' на ночь.",
@@ -101,7 +102,7 @@
                 "a3": "Проверьте подключение к интернету. Убедитесь, что для приложения отключена оптимизация батареи в настройках системы Android."
             },
             uk: {
-                "nav-home": "Головна", "nav-features": "Можливості", "nav-setup": "Налаштування", "nav-faq": "Часті питання",
+                "nav-home": "Головна", "nav-features": "Можливості", "nav-setup": "Налаштування", "nav-faq": "Часті питання", "nav-contact": "Контакти",
                 "h1-title": "Часті питання",
                 "q1": "Чи розряджає віджет батарею?",
                 "a1": "Ні. Віджет використовує розумну фонову синхронізацію. Оновлення працюють на заблокованому екрані, але ви можете увімкнути 'Тихі години' для ночі.",
@@ -114,6 +115,7 @@
         const els = { 'BTCUSDT': document.getElementById('price-btc'), 'ETHUSDT': document.getElementById('price-eth'), 'SOLUSDT': document.getElementById('price-sol') };
         const lastPrices = { 'BTCUSDT': 0, 'ETHUSDT': 0, 'SOLUSDT': 0 };
         const formatPrice = (price) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(price);
+        
         function setLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -124,16 +126,14 @@
             });
             localStorage.setItem('appLang', lang);
         }
-
+        
         const savedLang = localStorage.getItem('appLang') || 'en';
         setLanguage(savedLang);
 
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
         });
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
-        });
+        
         async function loadInitialPrices() {
             const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
             try {
