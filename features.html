@@ -9,32 +9,115 @@
     <link rel="icon" href="icon-32.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background-color: #0f172a; background-image: url('bg.webp'); background-size: cover; background-position: center; background-attachment: fixed; color: #333; display: flex; justify-content: center; min-height: 100vh; }
-        .main-wrapper { width: 100%; max-width: 800px; margin: 60px 20px; display: flex; flex-direction: column; gap: 20px; }
-        .container { padding: 40px; background-color: rgba(255, 255, 255, 0.9); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); border-radius: 24px; }
-        .seo-content { padding: 40px; background-color: rgba(255, 255, 255, 0.95); border-radius: 24px; line-height: 1.6; color: #2c3e50; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
-        .site-nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-bottom: 15px; flex-wrap: wrap; }
-        .site-nav a { color: #3498db; text-decoration: none; font-weight: 700; font-size: 1em; transition: color 0.2s; }
-        .site-nav a:hover, .site-nav a.active { color: #2c3e50; text-decoration: underline; }
-        h1 { color: #2c3e50; font-size: 2em; text-align: center; margin-bottom: 30px; }
-        h2 { color: #3498db; font-size: 1.4em; margin-top: 0; }
-        p { color: #455a64; font-size: 1em; margin-bottom: 20px; }
-        .feature-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .feature-card { background: rgba(240, 244, 248, 0.8); padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0; }
-        .language-switcher { position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: 5px; flex-wrap: wrap; max-width: 180px; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(10px); padding: 8px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .lang-btn { background: transparent; border: none; color: #fff; padding: 5px 8px; cursor: pointer; font-size: 10px; font-weight: 700; border-radius: 6px; text-transform: uppercase; opacity: 0.6; }
-        .lang-btn:hover, .lang-btn.active { opacity: 1; background: #3498db; }
-        @media (max-width: 768px) { .language-switcher { top: 10px; left: 10px; max-width: 130px; } .main-wrapper { margin-top: 80px; } }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0f172a;
+            background-image: url('bg.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 900px;
+            margin: 80px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Та же панель, что и на главной */
+        .glass-panel {
+            padding: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(25px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 15px rgba(52, 152, 219, 0.1);
+            border-radius: 32px;
+            text-align: center;
+        }
+
+        .site-nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .site-nav a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.2s;
+        }
+        
+        .site-nav a:hover, .site-nav a.active {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        h1 { font-size: 2.5em; font-weight: 700; margin-bottom: 40px; }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            text-align: left;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); }
+
+        .feature-card h2 { color: #3498db; font-size: 1.4em; margin-top: 0; margin-bottom: 15px; }
+        .feature-card p { color: rgba(255, 255, 255, 0.7); font-size: 1em; line-height: 1.6; margin: 0; }
+
+        .language-switcher {
+            position: fixed; top: 20px; left: 20px; z-index: 1000;
+            display: flex; gap: 5px; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px);
+            padding: 8px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .lang-btn {
+            background: transparent; border: none; color: rgba(255, 255, 255, 0.5); padding: 5px 8px;
+            cursor: pointer; font-size: 10px; font-weight: 700; border-radius: 6px; text-transform: uppercase;
+        }
+        .lang-btn.active { color: #fff; background: rgba(52, 152, 219, 0.4); }
+
+        @media (max-width: 768px) {
+            .glass-panel { padding: 30px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2em; }
+            .language-switcher { top: 10px; left: 10px; }
+            .main-wrapper { margin-top: 70px; }
+        }
     </style>
 </head>
 <body>
     <div class="language-switcher">
-        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="ru">RU</button>
         <button class="lang-btn" data-lang="uk">UK</button>
     </div>
+
     <main class="main-wrapper">
-        <div class="container">
+        <div class="glass-panel">
             <nav class="site-nav">
                 <a href="index.html" data-i18n="nav-home">Home</a>
                 <a href="features.html" class="active" data-i18n="nav-features">Features</a>
@@ -42,68 +125,71 @@
                 <a href="faq.html" data-i18n="nav-faq">FAQ</a>
                 <a href="contact.html" data-i18n="nav-contact">Contact</a>
             </nav>
+
             <h1 data-i18n="h1-title">Advanced Widget Features</h1>
+            
             <div class="feature-grid">
                 <div class="feature-card">
                     <h2 data-i18n="f1-title">Real-time Binance Sync</h2>
-                    <p data-i18n="f1-desc">Direct integration with Binance REST API and WebSockets ensures you receive the most accurate and up-to-date pricing data without intermediary server delays.</p>
+                    <p data-i18n="f1-desc">Direct integration with Binance REST API and WebSockets ensures you receive the most accurate pricing data without intermediary delays.</p>
                 </div>
+                
                 <div class="feature-card">
                     <h2 data-i18n="f2-title">Battery & Network Optimization</h2>
-                    <p data-i18n="f2-desc">Intelligent background processing. The widget continues to update on the lock screen and supports 'Quiet Hours' to prevent battery drain during the night.</p>
+                    <p data-i18n="f2-desc">Intelligent background processing. The widget continues to update on the lock screen and supports 'Quiet Hours' to save battery at night.</p>
                 </div>
+
                 <div class="feature-card">
                     <h2 data-i18n="f3-title">Glassmorphism UI Customization</h2>
-                    <p data-i18n="f3-desc">Fully adjust the aesthetic of your widget. Control background opacity, corner radius, border width, and dynamic neon glow effects to match any wallpaper.</p>
+                    <p data-i18n="f3-desc">Fully adjust the aesthetic of your widget. Control background opacity, corner radius, border width, and dynamic neon glow effects.</p>
                 </div>
+
                 <div class="feature-card">
                     <h2 data-i18n="f4-title">Multi-Coin & Portfolio Modes</h2>
-                    <p data-i18n="f4-desc">Track a single asset with a detailed candlestick chart, or monitor up to 4 different coins simultaneously in a compact multi-coin list layout.</p>
+                    <p data-i18n="f4-desc">Track a single asset with a detailed candlestick chart, or monitor up to 4 different coins simultaneously in a compact layout.</p>
                 </div>
             </div>
         </div>
     </main>
+
     <script>
         const translations = {
             en: {
                 "nav-home": "Home", "nav-features": "Features", "nav-setup": "How to Setup", "nav-faq": "FAQ", "nav-contact": "Contact",
                 "h1-title": "Advanced Widget Features",
-                "f1-title": "Real-time Binance Sync", "f1-desc": "Direct integration with Binance REST API and WebSockets ensures you receive the most accurate and up-to-date pricing data without intermediary server delays.",
-                "f2-title": "Battery & Network Optimization", "f2-desc": "Intelligent background processing. The widget continues to update on the lock screen and supports 'Quiet Hours' to prevent battery drain during the night.",
-                "f3-title": "Glassmorphism UI Customization", "f3-desc": "Fully adjust the aesthetic of your widget. Control background opacity, corner radius, border width, and dynamic neon glow effects to match any wallpaper.",
-                "f4-title": "Multi-Coin & Portfolio Modes", "f4-desc": "Track a single asset with a detailed candlestick chart, or monitor up to 4 different coins simultaneously in a compact multi-coin list layout."
+                "f1-title": "Real-time Binance Sync", "f1-desc": "Direct integration with Binance REST API and WebSockets ensures you receive the most accurate pricing data without intermediary delays.",
+                "f2-title": "Battery & Network Optimization", "f2-desc": "Intelligent background processing. The widget continues to update on the lock screen and supports 'Quiet Hours' to save battery at night.",
+                "f3-title": "Glassmorphism UI Customization", "f3-desc": "Fully adjust the aesthetic of your widget. Control background opacity, corner radius, border width, and dynamic neon glow effects.",
+                "f4-title": "Multi-Coin & Portfolio Modes", "f4-desc": "Track a single asset with a detailed candlestick chart, or monitor up to 4 different coins simultaneously in a compact layout."
             },
             ru: {
-                "nav-home": "Главная", "nav-features": "Возможности", "nav-setup": "Настройка", "nav-faq": "Частые вопросы", "nav-contact": "Контакты",
-                "h1-title": "Расширенные возможности виджета",
-                "f1-title": "Синхронизация с Binance", "f1-desc": "Прямая интеграция с Binance API обеспечивает получение точных данных о ценах без задержек.",
-                "f2-title": "Оптимизация батареи", "f2-desc": "Умная фоновая работа. Виджет продолжает обновляться на заблокированном экране и поддерживает функцию 'Тихие часы' для экономии заряда ночью.",
-                "f3-title": "Кастомизация Glassmorphism", "f3-desc": "Полный контроль над внешним видом: прозрачность фона, радиус скругления, толщина рамок и неоновое свечение.",
+                "nav-home": "Главная", "nav-features": "Возможности", "nav-setup": "Настройка", "nav-faq": "FAQ", "nav-contact": "Контакты",
+                "h1-title": "Расширенные возможности",
+                "f1-title": "Синхронизация с Binance", "f1-desc": "Прямая интеграция с Binance API обеспечивает получение точных данных о ценах в реальном времени без задержек.",
+                "f2-title": "Оптимизация батареи", "f2-desc": "Умная фоновая работа. Виджет продолжает обновляться на заблокированном экране и поддерживает режим 'Тихие часы'.",
+                "f3-title": "Настройка Glassmorphism", "f3-desc": "Полный контроль над внешним видом: прозрачность фона, радиус скругления, толщина рамок и неоновое свечение.",
                 "f4-title": "Мульти-мониторинг", "f4-desc": "Следите за одним активом с детальным графиком или отслеживайте до 4 разных монет одновременно."
             },
             uk: {
-                "nav-home": "Головна", "nav-features": "Можливості", "nav-setup": "Налаштування", "nav-faq": "Часті питання", "nav-contact": "Контакти",
-                "h1-title": "Розширені можливості віджета",
+                "nav-home": "Головна", "nav-features": "Можливості", "nav-setup": "Налаштування", "nav-faq": "FAQ", "nav-contact": "Контакти",
+                "h1-title": "Розширені можливості",
                 "f1-title": "Синхронізація з Binance", "f1-desc": "Пряма інтеграція з Binance API забезпечує отримання точних даних про ціни без затримок.",
-                "f2-title": "Оптимізація батареї", "f2-desc": "Розумна фонова робота. Віджет продовжує оновлюватися на заблокованому екрані та підтримує функцію 'Тихі години' для економії заряду вночі.",
-                "f3-title": "Кастомізація Glassmorphism", "f3-desc": "Повний контроль над зовнішнім виглядом: прозорість фону, радіус заокруглення, товщина рамок та неонове світіння.",
+                "f2-title": "Оптимізація батареї", "f2-desc": "Розумна фонова робота. Віджет продовжує оновлюватися на заблокованому екрані та підтримує режим 'Тихі години'.",
+                "f3-title": "Налаштування Glassmorphism", "f3-desc": "Повний контроль над зовнішнім виглядом: прозорість фону, радіус заокруглення, товщина рамок та неонове світіння.",
                 "f4-title": "Мульти-моніторинг", "f4-desc": "Слідкуйте за одним активом з детальним графіком або відстежуйте до 4 різних монет одночасно."
             }
         };
+
         function setLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
             });
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-            });
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-lang') === lang));
             localStorage.setItem('appLang', lang);
         }
         
-        const savedLang = localStorage.getItem('appLang') || 'en';
-        setLanguage(savedLang);
-
+        setLanguage(localStorage.getItem('appLang') || 'en');
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
         });
