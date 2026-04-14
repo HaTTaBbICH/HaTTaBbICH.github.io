@@ -40,6 +40,7 @@
                 <a href="features.html" class="active" data-i18n="nav-features">Features</a>
                 <a href="setup.html" data-i18n="nav-setup">How to Setup</a>
                 <a href="faq.html" data-i18n="nav-faq">FAQ</a>
+                <a href="contact.html" data-i18n="nav-contact">Contact</a>
             </nav>
             <h1 data-i18n="h1-title">Advanced Widget Features</h1>
             <div class="feature-grid">
@@ -65,7 +66,7 @@
     <script>
         const translations = {
             en: {
-                "nav-home": "Home", "nav-features": "Features", "nav-setup": "How to Setup", "nav-faq": "FAQ",
+                "nav-home": "Home", "nav-features": "Features", "nav-setup": "How to Setup", "nav-faq": "FAQ", "nav-contact": "Contact",
                 "h1-title": "Advanced Widget Features",
                 "f1-title": "Real-time Binance Sync", "f1-desc": "Direct integration with Binance REST API and WebSockets ensures you receive the most accurate and up-to-date pricing data without intermediary server delays.",
                 "f2-title": "Battery & Network Optimization", "f2-desc": "Intelligent background processing. The widget continues to update on the lock screen and supports 'Quiet Hours' to prevent battery drain during the night.",
@@ -73,7 +74,7 @@
                 "f4-title": "Multi-Coin & Portfolio Modes", "f4-desc": "Track a single asset with a detailed candlestick chart, or monitor up to 4 different coins simultaneously in a compact multi-coin list layout."
             },
             ru: {
-                "nav-home": "Главная", "nav-features": "Возможности", "nav-setup": "Настройка", "nav-faq": "Частые вопросы",
+                "nav-home": "Главная", "nav-features": "Возможности", "nav-setup": "Настройка", "nav-faq": "Частые вопросы", "nav-contact": "Контакты",
                 "h1-title": "Расширенные возможности виджета",
                 "f1-title": "Синхронизация с Binance", "f1-desc": "Прямая интеграция с Binance API обеспечивает получение точных данных о ценах без задержек.",
                 "f2-title": "Оптимизация батареи", "f2-desc": "Умная фоновая работа. Виджет продолжает обновляться на заблокированном экране и поддерживает функцию 'Тихие часы' для экономии заряда ночью.",
@@ -81,7 +82,7 @@
                 "f4-title": "Мульти-мониторинг", "f4-desc": "Следите за одним активом с детальным графиком или отслеживайте до 4 разных монет одновременно."
             },
             uk: {
-                "nav-home": "Головна", "nav-features": "Можливості", "nav-setup": "Налаштування", "nav-faq": "Часті питання",
+                "nav-home": "Головна", "nav-features": "Можливості", "nav-setup": "Налаштування", "nav-faq": "Часті питання", "nav-contact": "Контакти",
                 "h1-title": "Розширені можливості віджета",
                 "f1-title": "Синхронізація з Binance", "f1-desc": "Пряма інтеграція з Binance API забезпечує отримання точних даних про ціни без затримок.",
                 "f2-title": "Оптимізація батареї", "f2-desc": "Розумна фонова робота. Віджет продовжує оновлюватися на заблокованому екрані та підтримує функцію 'Тихі години' для економії заряду вночі.",
@@ -99,13 +100,10 @@
             });
             localStorage.setItem('appLang', lang);
         }
-
+        
         const savedLang = localStorage.getItem('appLang') || 'en';
         setLanguage(savedLang);
 
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
-        });
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
         });
