@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ – CryptoCoin Widget</title>
+    <meta name="description" content="Frequently asked questions about CryptoCoin Widget. Learn about battery usage, update intervals, and troubleshooting.">
+    <meta name="keywords" content="crypto widget faq, troubleshoot crypto widget, android widget battery">
+    
+    <link rel="icon" href="icon-32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; margin: 0; padding: 0;
+            background-color: #0f172a; background-image: url('bg.webp');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: #333; display: flex; justify-content: center; min-height: 100vh;
+        }
+        .main-wrapper { width: 100%; max-width: 800px; margin: 60px 20px; display: flex; flex-direction: column; gap: 20px; }
+        .container {
+            padding: 40px; background-color: rgba(255, 255, 255, 0.9);
+            -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border-radius: 24px;
+        }
+        .seo-content { padding: 40px; background-color: rgba(255, 255, 255, 0.95); border-radius: 24px; line-height: 1.6; color: #2c3e50; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .site-nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 25px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-bottom: 15px; flex-wrap: wrap; }
+        .site-nav a { color: #3498db; text-decoration: none; font-weight: 700; font-size: 1em; transition: color 0.2s; }
+        .site-nav a:hover, .site-nav a.active { color: #2c3e50; text-decoration: underline; }
+        h1 { color: #2c3e50; font-size: 2em; text-align: center; margin-bottom: 30px; }
+        
+        .faq-item { margin-bottom: 25px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px; }
+        .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .faq-question { color: #3498db; font-size: 1.2em; font-weight: 700; margin-bottom: 10px; margin-top: 0; }
+        .faq-answer { color: #455a64; margin: 0; }
+
+        .live-ticker-box {
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15); padding: 15px 20px;
+            border-radius: 20px; display: flex; flex-direction: column; gap: 8px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5); min-width: 180px;
+        }
+        .ticker-row { display: flex; justify-content: space-between; color: #fff; font-size: 0.95em; font-weight: 700; }
+        .coin-info { display: flex; align-items: center; gap: 8px; }
+        .live-indicator { width: 6px; height: 6px; background-color: #00ff00; border-radius: 50%; box-shadow: 0 0 8px #00ff00; animation: pulse 2s infinite; }
+        .price-value { text-align: right; font-variant-numeric: tabular-nums; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        .language-switcher { position: fixed; top: 20px; left: 20px; z-index: 1000; display: flex; gap: 5px; flex-wrap: wrap; max-width: 180px; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(10px); padding: 8px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .lang-btn { background: transparent; border: none; color: #fff; padding: 5px 8px; cursor: pointer; font-size: 10px; font-weight: 700; border-radius: 6px; text-transform: uppercase; opacity: 0.6; }
+        .lang-btn:hover, .lang-btn.active { opacity: 1; background: #3498db; }
+
+        @media (max-width: 768px) {
+            .language-switcher { top: 10px; left: 10px; max-width: 130px; }
+            .live-ticker-box { top: auto; bottom: 20px; right: 10px; left: 10px; min-width: 0; }
+            .main-wrapper { margin-top: 80px; margin-bottom: 100px;}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="uk">UK</button>
+    </div>
+
+    <main class="main-wrapper">
+        <div class="container">
+            <nav class="site-nav">
+                <a href="index.html" data-i18n="nav-home">Home</a>
+                <a href="features.html" data-i18n="nav-features">Features</a>
+                <a href="setup.html" data-i18n="nav-setup">How to Setup</a>
+                <a href="faq.html" class="active" data-i18n="nav-faq">FAQ</a>
+            </nav>
+
+            <h1 data-i18n="h1-title">Frequently Asked Questions</h1>
+            
+            <div class="seo-content">
+                <div class="faq-item">
+                    <h2 class="faq-question" data-i18n="q1">Does the widget drain battery?</h2>
+                    <p class="faq-answer" data-i18n="a1">No. The widget uses smart background sync via Android WorkManager. Updates are paused when the screen is locked, and you can enable "Quiet Hours" to completely stop network requests during the night.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h2 class="faq-question" data-i18n="q2">How do I change the crypto coin?</h2>
+                    <p class="faq-answer" data-i18n="a2">Tap the small gear (settings) icon in the corner of the widget. This opens the configuration menu where you can select a new trading pair and exchange.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h2 class="faq-question" data-i18n="q3">Why is the widget not updating?</h2>
+                    <p class="faq-answer" data-i18n="a3">Check your internet connection. Also, ensure that battery optimization for the app is disabled in your Android system settings, as aggressive OS power management can kill background tasks.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="live-ticker-box">
+        <div class="ticker-row">
+            <div class="coin-info"><div class="live-indicator"></div><span style="color: #F7931A;">₿</span><span>BTC</span></div>
+            <span id="price-btc" class="price-value"></span>
+        </div>
+        <div class="ticker-row">
+            <div class="coin-info"><div class="live-indicator"></div><span style="color: #627EEA;">Ξ</span><span>ETH</span></div>
+            <span id="price-eth" class="price-value"></span>
+        </div>
+        <div class="ticker-row">
+            <div class="coin-info"><div class="live-indicator"></div><span style="color: #14F195;">◎</span><span>SOL</span></div>
+            <span id="price-sol" class="price-value"></span>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                "nav-home": "Home", "nav-features": "Features", "nav-setup": "How to Setup", "nav-faq": "FAQ",
+                "h1-title": "Frequently Asked Questions",
+                "q1": "Does the widget drain battery?",
+                "a1": "No. The widget uses smart background sync via Android WorkManager. Updates are paused when the screen is locked, and you can enable 'Quiet Hours' to completely stop network requests during the night.",
+                "q2": "How do I change the crypto coin?",
+                "a2": "Tap the small gear (settings) icon in the corner of the widget. This opens the configuration menu where you can select a new trading pair and exchange.",
+                "q3": "Why is the widget not updating?",
+                "a3": "Check your internet connection. Also, ensure that battery optimization for the app is disabled in your Android system settings, as aggressive OS power management can kill background tasks."
+            },
+            ru: {
+                "nav-home": "Главная", "nav-features": "Возможности", "nav-setup": "Настройка", "nav-faq": "Частые вопросы",
+                "h1-title": "Частые вопросы",
+                "q1": "Садит ли виджет батарею?",
+                "a1": "Нет. Виджет использует умную фоновую синхронизацию. Обновления приостанавливаются при заблокированном экране. Также можно включить 'Тихие часы'.",
+                "q2": "Как изменить монету?",
+                "a2": "Нажмите на иконку шестеренки (настройки) в углу виджета. Откроется меню, где можно выбрать новую торговую пару.",
+                "q3": "Почему виджет не обновляется?",
+                "a3": "Проверьте подключение к интернету. Убедитесь, что для приложения отключена оптимизация батареи в настройках системы Android."
+            },
+            uk: {
+                "nav-home": "Головна", "nav-features": "Можливості", "nav-setup": "Налаштування", "nav-faq": "Часті питання",
+                "h1-title": "Часті питання",
+                "q1": "Чи розряджає віджет батарею?",
+                "a1": "Ні. Віджет використовує розумну фонову синхронізацію. Оновлення призупиняються при заблокованому екрані.",
+                "q2": "Як змінити монету?",
+                "a2": "Натисніть на іконку налаштувань у куті віджета. Відкриється меню, де можна вибрати нову торгову пару.",
+                "q3": "Чому віджет не оновлюється?",
+                "a3": "Перевірте підключення до інтернету. Переконайтеся, що для програми вимкнено оптимізацію батареї в налаштуваннях системи."
+            }
+        };
+
+        const els = {
+            'BTCUSDT': document.getElementById('price-btc'),
+            'ETHUSDT': document.getElementById('price-eth'),
+            'SOLUSDT': document.getElementById('price-sol')
+        };
+        const lastPrices = { 'BTCUSDT': 0, 'ETHUSDT': 0, 'SOLUSDT': 0 };
+        const formatPrice = (price) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(price);
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+        });
+
+        async function loadInitialPrices() {
+            const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
+            try {
+                const response = await fetch(`https://api.binance.com/api/v3/ticker/price?symbols=${JSON.stringify(symbols)}`);
+                const data = await response.json();
+                data.forEach(item => {
+                    const symbol = item.symbol;
+                    if (els[symbol]) {
+                        const price = parseFloat(item.price);
+                        els[symbol].innerText = formatPrice(price);
+                        lastPrices[symbol] = price;
+                    }
+                });
+            } catch (e) { console.error("API error:", e); }
+        }
+        loadInitialPrices();
+
+        const ws = new WebSocket('wss://stream.binance.com:9443/stream?streams=btcusdt@trade/ethusdt@trade/solusdt@trade');
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data).data;
+            const symbol = data.s;
+            if (!els[symbol]) return;
+            const currentPrice = parseFloat(data.p);
+            els[symbol].innerText = formatPrice(currentPrice);
+            if (lastPrices[symbol] > 0) els[symbol].style.color = currentPrice >= lastPrices[symbol] ? '#4caf50' : '#ff5252';
+            lastPrices[symbol] = currentPrice;
+        };
+    </script>
+</body>
+</html>
