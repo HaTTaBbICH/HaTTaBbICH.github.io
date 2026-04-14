@@ -145,6 +145,49 @@
         .play-store-badge img { width: 250px; height: auto; transition: transform 0.2s; }
         .play-store-badge img:hover { transform: scale(1.05); }
 
+        .play-store-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .qr-hover-box {
+            position: absolute;
+            left: 105%;
+            top: 50%;
+            transform: translateY(-50%) scale(0.8);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-out;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 15px;
+            border: 3px solid #14F195;
+            box-shadow: 0 0 20px rgba(20, 241, 149, 0.4);
+            width: 160px;
+            z-index: 2000;
+        }
+        
+        .play-store-container:hover .qr-hover-box {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) scale(1);
+        }
+        
+        .qr-hover-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+        
+        .qr-text {
+            color: #0f172a;
+            font-size: 13px;
+            margin-top: 8px;
+            font-weight: 700;
+            text-align: center;
+        }
+
         .live-ticker-box {
             position: fixed; top: 20px; right: 20px; z-index: 1000;
             background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px);
@@ -175,6 +218,7 @@
             .language-switcher { top: 10px; left: 10px; max-width: 130px; }
             .live-ticker-box { top: auto; bottom: 20px; right: 10px; left: 10px; min-width: 0; }
             .main-wrapper { margin-top: 80px; margin-bottom: 120px; }
+            .qr-hover-box { display: none; }
         }
     </style>
 </head>
@@ -207,9 +251,15 @@
             </p>
             
             <div class="play-store-badge">
-                <a href='https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget' target="_blank">
-                    <img alt='Download CryptoCoin Widget from Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
-                </a>
+                <div class="play-store-container">
+                    <a href='https://play.google.com/store/apps/details?id=com.maksdev.cryptocoinwidget' target="_blank">
+                        <img alt='Download CryptoCoin Widget from Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
+                    </a>
+                    <div class="qr-hover-box">
+                        <img src="qr_code.png" alt="QR code to install CryptoCoin Widget">
+                        <div class="qr-text" data-i18n="qr-text">Scan to install</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -223,7 +273,7 @@
                     <li data-i18n="li-1"><strong>Real-Time Sync:</strong> Uses robust WebSocket and REST APIs (Binance) to ensure zero delay in price feeds.</li>
                     <li data-i18n="li-2"><strong>Customizable UI:</strong> Supports Glassmorphism, dark/light themes, custom chart colors, and adjustable opacity to match your wallpaper perfectly.</li>
                     <li data-i18n="li-3"><strong>Multi-Coin Support:</strong> Monitor up to multiple assets in a single compact widget block.</li>
-                    <li data-i18n="li-4"><strong>Battery Efficient:</strong> Smart background synchronization suspends updates when the screen is off or during designated "Quiet Hours".</li>
+                    <li data-i18n="li-4"><strong>Battery Efficient:</strong> Smart background sync. The widget updates on the lock screen and supports "Quiet Hours" to save battery at night.</li>
                 </ul>
             </section>
             
@@ -268,9 +318,10 @@
                 "li-1": "Real-Time Sync: Uses robust WebSocket and REST APIs (Binance) to ensure zero delay in price feeds.",
                 "li-2": "Customizable UI: Supports Glassmorphism, dark/light themes, custom chart colors, and adjustable opacity.",
                 "li-3": "Multi-Coin Support: Monitor multiple assets in a single compact widget block.",
-                "li-4": "Battery Efficient: Smart background synchronization suspends updates when the screen is off.",
+                "li-4": "Battery Efficient: Smart background sync. The widget updates on the lock screen and supports 'Quiet Hours' to save battery at night.",
                 "h2-target": "Track Your Crypto Portfolio",
-                "p-target": "Whether you need a simple Bitcoin ticker or a complex Top Volume dashboard, CryptoCoin Widget adapts to your analytical needs. Avoid missing critical market breakouts or sudden dumps by having the data always visible at a glance."
+                "p-target": "Whether you need a simple Bitcoin ticker or a complex Top Volume dashboard, CryptoCoin Widget adapts to your analytical needs. Avoid missing critical market breakouts or sudden dumps by having the data always visible at a glance.",
+                "qr-text": "Scan to install"
             },
             ru: {
                 "nav-home": "Главная", "nav-features": "Возможности", "nav-setup": "Настройка", "nav-faq": "Частые вопросы",
@@ -282,9 +333,25 @@
                 "li-1": "Синхронизация в реальном времени (Binance API).",
                 "li-2": "Кастомизация UI: стили Glassmorphism, настройка прозрачности, цветов и теней.",
                 "li-3": "Мульти-мониторинг: вывод нескольких торговых пар в одном блоке.",
-                "li-4": "Энергоэффективность: авто-пауза при выключенном экране и функция Тихие часы.",
+                "li-4": "Энергоэффективность: Умная фоновая синхронизация. Виджет продолжает обновляться на заблокированном экране и поддерживает функцию 'Тихие часы'.",
                 "h2-target": "Мониторинг портфеля",
-                "p-target": "Будьте в курсе пробитий уровней и дампов. От простого тикера биткоина до сложного дашборда объемов – вся информация всегда перед глазами."
+                "p-target": "Будьте в курсе пробитий уровней и дампов. От простого тикера биткоина до сложного дашборда объемов – вся информация всегда перед глазами.",
+                "qr-text": "Сканируйте для установки"
+            },
+            uk: {
+                "nav-home": "Головна", "nav-features": "Можливості", "nav-setup": "Налаштування", "nav-faq": "Часті питання",
+                "tagline": "Найкращий віджет криптовалют для екрана Android",
+                "seo-text": "Перетворіть ваш Android на професійний термінал. Відстежуйте Bitcoin, Ethereum, Solana та сотні альткоїнів прямо на робочому столі з інтеграцією Binance API у реальному часі.",
+                "h2-why": "Чому варто обрати CryptoCoin Widget?",
+                "p-why": "Постійне відкриття біржового додатка для перевірки цін неефективне. Наш віджет вирішує цю проблему, виводячи графіки, курси та обсяги торгів за 24 години прямо на головний екран смартфона.",
+                "h3-features": "Ключові можливості:",
+                "li-1": "Синхронізація у реальному часі (Binance API).",
+                "li-2": "Кастомізація UI: стилі Glassmorphism, налаштування прозорості, кольорів та тіней.",
+                "li-3": "Мульти-моніторинг: виведення кількох торгових пар в одному блоці.",
+                "li-4": "Енергоефективність: Розумна фонова синхронізація. Віджет продовжує оновлюватися на заблокованому екрані та підтримує функцію 'Тихі години'.",
+                "h2-target": "Моніторинг портфеля",
+                "p-target": "Будьте в курсі пробиття рівнів та дампів. Від простого тикера біткоїна до складного дашборда обсягів – вся інформація завжди перед очима.",
+                "qr-text": "Скануйте для встановлення"
             }
         };
 
