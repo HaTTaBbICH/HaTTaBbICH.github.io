@@ -188,6 +188,20 @@
             text-align: center;
         }
 
+        .contact-section {
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px dashed #b0bec5;
+            text-align: left;
+        }
+
+        .contact-section ul { list-style: none; padding: 0; }
+        .contact-section li { margin-bottom: 15px; display: flex; align-items: center; }
+        .contact-section .icon { font-size: 1.5em; margin-right: 15px; line-height: 1; }
+        .contact-link-text { color: #3498db; text-decoration: none; font-weight: 500; }
+        .contact-link-text:hover { text-decoration: underline; }
+        .contact-label { font-weight: 600; color: #546e7a; margin-right: 5px; }
+
         .live-ticker-box {
             position: fixed; top: 20px; right: 20px; z-index: 1000;
             background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px);
@@ -261,6 +275,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="contact-section">
+                <h2 data-i18n="support-title" style="text-align: center; margin-bottom: 20px; margin-top: 0; color: #3498db;">Support & Policy</h2>
+                <ul>
+                    <li>
+                        <span class="icon">📢</span>
+                        <span class="contact-label" data-i18n="label-tg">Telegram Channel: </span>                    
+                        <a href="https://t.me/cryptocoinwidget" class="contact-link-text" target="_blank" data-i18n="link-tg">Follow us</a>
+                    </li>
+                    <li>
+                        <span class="icon">✉️</span>
+                        <span class="contact-label" data-i18n="label-mail">Support Email: </span>
+                        <a href="mailto:u58332353001243@gmail.com" class="contact-link-text">u58332353001243@gmail.com</a>
+                    </li>
+                    <li>
+                        <span class="icon">🛡️</span>
+                        <span class="contact-label" data-i18n="label-privacy">Privacy Policy: </span>                  
+                        <a href="https://www.iubenda.com/privacy-policy/24034645" class="contact-link-text" target="_blank" data-i18n="link-privacy">View our commitment to your privacy</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <article class="seo-content">
@@ -312,6 +347,7 @@
                 "nav-home": "Home", "nav-features": "Features", "nav-setup": "How to Setup", "nav-faq": "FAQ",
                 "tagline": "The Ultimate Cryptocurrency Home Screen Tracker for Android",
                 "seo-text": "Transform your Android device into a professional crypto monitoring terminal. Track Bitcoin (BTC), Ethereum (ETH), Solana (SOL), and hundreds of altcoins directly on your home screen with real-time Binance API integration.",
+                "support-title": "Support & Policy", "label-tg": "Telegram Channel: ", "link-tg": "Follow us", "label-mail": "Support Email: ", "label-privacy": "Privacy Policy: ", "link-privacy": "View our commitment to your privacy",
                 "h2-why": "Why Choose CryptoCoin Widget?",
                 "p-why": "In the highly volatile cryptocurrency market, checking prices by repeatedly opening an exchange app is inefficient. CryptoCoin Widget solves this by displaying live market data on your Android home screen. Designed for traders, HODLers, and crypto enthusiasts, our widget provides instant access to trading pairs, 24-hour volume changes, and interactive candlestick charts.",
                 "h3-features": "Core Capabilities:",
@@ -327,6 +363,7 @@
                 "nav-home": "Главная", "nav-features": "Возможности", "nav-setup": "Настройка", "nav-faq": "Частые вопросы",
                 "tagline": "Лучший виджет криптовалют для экрана Android",
                 "seo-text": "Превратите ваш Android в профессиональный терминал. Отслеживайте Bitcoin, Ethereum, Solana и сотни альткоинов прямо на рабочем столе с интеграцией Binance API в реальном времени.",
+                "support-title": "Поддержка и Политика", "label-tg": "Telegram канал: ", "link-tg": "Подписаться", "label-mail": "Email поддержки: ", "label-privacy": "Политика конфиденциальности: ", "link-privacy": "Наше обязательство по защите данных",
                 "h2-why": "Почему стоит выбрать CryptoCoin Widget?",
                 "p-why": "Постоянное открытие биржевого приложения для проверки цен неэффективно. Наш виджет решает эту проблему, выводя графики, курсы и объемы торгов за 24 часа прямо на главный экран смартфона.",
                 "h3-features": "Ключевые возможности:",
@@ -342,6 +379,7 @@
                 "nav-home": "Головна", "nav-features": "Можливості", "nav-setup": "Налаштування", "nav-faq": "Часті питання",
                 "tagline": "Найкращий віджет криптовалют для екрана Android",
                 "seo-text": "Перетворіть ваш Android на професійний термінал. Відстежуйте Bitcoin, Ethereum, Solana та сотні альткоїнів прямо на робочому столі з інтеграцією Binance API у реальному часі.",
+                "support-title": "Підтримка та Політика", "label-tg": "Telegram канал: ", "link-tg": "Підписатися", "label-mail": "Email підтримки: ", "label-privacy": "Політика конфіденційності: ", "link-privacy": "Наше зобов'язання щодо вашої приватності",
                 "h2-why": "Чому варто обрати CryptoCoin Widget?",
                 "p-why": "Постійне відкриття біржового додатка для перевірки цін неефективне. Наш віджет вирішує цю проблему, виводячи графіки, курси та обсяги торгів за 24 години прямо на головний екран смартфона.",
                 "h3-features": "Ключові можливості:",
@@ -386,10 +424,6 @@
 
         const savedLang = localStorage.getItem('appLang') || 'en';
         setLanguage(savedLang);
-
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
-        });
 
         loadInitialPrices();
         document.querySelectorAll('.lang-btn').forEach(btn => {
