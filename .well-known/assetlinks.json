@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.maksdev.cryptocoinwidget",
+      "sha256_cert_fingerprints": [
+        "8B:02:01:72:D9:89:EA:C8:4F:AF:B4:58:BE:FB:E1:9C:BA:E4:13:74:E5:5F:9E:09:7D:55:CE:76:6D:49:A7:22"
+      ]
+    }
+  }
+]
